@@ -1,0 +1,22 @@
+.sign-in {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(
+        189.16deg
+        , rgb(67, 22, 219) 13.57%, rgb(144, 118, 231) 98.38%);
+
+    .sign-in-form {
+        display: flex;
+        flex-direction: column;
+        width: 380px;
+        margin:auto;
+    
+        .title {
+            margin: 40px 0 0;
+            color: white;
+        }
+    }
+
+}
