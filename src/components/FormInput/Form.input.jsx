@@ -2,7 +2,7 @@ import React from "react";
 import './form-input.scss'
 
 export const FormInput = ({ handleChange, label, ...otherProps }) => {
-  console.log(otherProps.value.length)
+  
 
   return (
     <div className="group">

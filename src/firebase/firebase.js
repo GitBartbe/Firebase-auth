@@ -1,9 +1,9 @@
-
+import firebase from "firebase/compat/app";
 import { initializeApp } from "firebase/app";
+import "firebase/compat/auth";
 
 
-
-const firebaseConfig = {
+const config = {
   apiKey: "AIzaSyCBBU4q2DrrGyfT8sOiksGQ4OK9hDlrMzw",
   authDomain: "authorisation-test-e0e3d.firebaseapp.com",
   projectId: "authorisation-test-e0e3d",
@@ -13,4 +13,6 @@ const firebaseConfig = {
 };
 
 
-const app = initializeApp(firebaseConfig);
+firebase.initializeApp(config);
+
+export const auth = firebase.auth();

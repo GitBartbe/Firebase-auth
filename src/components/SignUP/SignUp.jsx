@@ -4,8 +4,12 @@ import { useState } from "react";
 import "./SignUp.scss";
 import { CustomButton } from "../CustomButton/CustomButton";
 
+import { auth } from "../../firebase/firebase";
+
+
+
 export const SignUp = () => {
-  const [user, setUser] = useState({
+  const [loginUser, setUser] = useState({
     displayName: "",
     email: "",
     password: "",
@@ -17,11 +21,24 @@ export const SignUp = () => {
     setUser((prevValue) => {
       return { ...prevValue, [name]: value };
     });
-    console.log(user);
+    
   }
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const {email, password} = loginUser;
+  const {user} =  auth.createUserWithEmailAndPassword(
+    email,
+    password
+  );
+ 
+}
+
+ 
   return (
     <div className="sign-up">
-    <div className="sign-up-form">
+    <form className="sign-up-form" onSubmit={handleSubmit}>
       <h1 className="title">Sign up</h1>
 
       <FormInput
@@ -29,7 +46,7 @@ export const SignUp = () => {
         type="text"
         onChange={handleHange}
         label="display name"
-        value={user.displayName}
+        value={loginUser.displayName}
         required
       />
 
@@ -38,7 +55,7 @@ export const SignUp = () => {
         type="email"
         onChange={handleHange}
         label="password"
-        value={user.email}
+        value={loginUser.email}
         required
       />
 
@@ -47,7 +64,7 @@ export const SignUp = () => {
         type="password"
         onChange={handleHange}
         label="password"
-        value={user.password}
+        value={loginUser.password}
         required
       />
 
@@ -56,11 +73,11 @@ export const SignUp = () => {
         type="password"
         onChange={handleHange}
         label="confirm password"
-        value={user.confirmPassword}
+        value={loginUser.confirmPassword}
         required
       />
-      <CustomButton>Sign In</CustomButton>
-    </div>
+      <CustomButton type='submit' >Sign In</CustomButton>
+    </form>
     
     </div>
   );
